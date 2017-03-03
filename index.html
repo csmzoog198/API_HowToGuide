@@ -1,0 +1,199 @@
+<link href="css.css" type="text/css" rel="stylesheet" />
+
+<div class="background" align="center">
+
+     <div class="outline">
+          <div class="header" align="left">
+               <div>
+                    <table class="header" align="center">
+                         <tr class="header">
+                              <td class="MarvelHeader">
+                                   <h1 class="MarvelHeader" style="color:white">MARVEL<br>Comics</h1>
+                              </td>
+                              <td class="howTo">
+                                   <h1 class="howTo" align="left" style="color:white">&nbsp API "How-To" Guide</h1>
+                              </td>
+                         </tr>
+                    </table>
+               </div>
+               <p class="author" text-align="center" style="color:white" width="100%">Written by: Christopher Zoog</p>
+          </div>
+          <div class="body">
+               <h3>Introduction</h3>
+               <p>
+                    The Marvel API is a phenomenal tool that allows developers to fetch information about all Marvel
+                     comics, characters, and writers. The Marvel API also allows some access to images related to each
+                     of those categories. All requests to the Marvel API must be GET requests and the results are returned
+                     in JSON format. 
+               </p>
+               <h3>Official Documentation:</h3>
+               <p>
+                    Click <a href="https://developer.marvel.com/">here</a> to vist the official documentation page for
+                     the Marvel Comic API. There, you can sign-up for a developer account, get your API key, access
+                     several how-to guides, and use the interactive API tester.
+               </p>
+               <h3>Topics Covered</h3>
+               <p>
+                    The "How-To" Guides on Marvel's site are farily clear, and wherever they might be lacking in
+                     examples, their comprehensive interactive API tester should enable the average developer to
+                     figure out how to use the Marvel API. However, as noted in the official documentation, the
+                     Marvel API and developer websites are still in its Beta phase, and so there are still some
+                     problems that you are going to encounter. These problems are not covered in any of the official
+                     documentation. First, this guide will make your way around a few bugs in Marvel's developer
+                     websites, listed below:
+                         <li>No "Accept" Button on the "Terms of Use" When Requesting an API Key</li>
+                         <li>Marvel's Interactive API Tester Does Not Appear When Accessed From Marvel's Site</li>
+               </p>
+               <p>
+                    Once you have your Marvel API key and you have access to the Interactive API Tester, you will
+                     be ready to start figuring out what you can do with the Marvel API. From that basepoint, this
+                     guide will discuss the following:
+                         <li>The Basics of Using the Marvel API</li>
+                         <li>The Subtle Differences Between Client-side and Server-side API Calls</li>
+                         <li>The Basics of and Variations on Image Requests</li>
+                         <li>A Note About Character IDs (and other Marvel ID Codes)</li> 
+                         <li>Using JavaScript to Download A Complete List of Characters</li>
+               </p>
+               <p>
+                    Finally, this guide will conclude with a few project ideas and suggestions on some ways you
+                     might use Marvel's web API.
+               </p>
+               <h3>No "Accept" Button on the "Terms of Use" Page When Requesting an API Key</h3>
+               <p>
+                    Marvel's website has a guide on how to get started with using the Marvel API, which can be found
+                     <a href="https://developer.marvel.com/documentation/getting_started">here</a>. Naturally, the
+                     first step is to create a developer account, which you can do by clicking <a href="https://marvel.com/register">here</a>.
+                     Complete and complete the registration using either your Facebook account, Google account, or e-mail
+                     address. Once you have sucessfully registered, you will receive a confirmation e-mail. You
+                     will need to click the link in that email to activate your developer account.
+               </p>
+               <p>
+                    While setting up your developer account is as straight-forward as it is on any other website,
+                     the process of requesting an API key will likely be snarled by an elusive bug. After you have
+                     a developer account, you can either click on the "Get A Key" tab at the top of Marvel's page,
+                     or click <a href="https://developer.marvel.com/signup">here</a>.
+               </p>
+               <p>
+                    Like you have probably seen a thousand times before, you will be presented with the Marvel
+                     API "Terms of Use", and you must read all the way to the bottom and then check the box
+                     confirming that you have read and agree to the terms. However, once you have checked that
+                     box, you will probably find yourself searching high and low for the "Accept" button. This
+                     is where I can save you some time and frustration.
+               </p>
+               <p>
+                    Whether it was designed as an additional security measure to prevent bots from continuously
+                     requesting keys, or simply an oversight, Marvel has written their page such that the "Accept"
+                     button is hidden by default. In order to reveal the button so you can accept the terms and
+                     get your API key, you must right click on the checkbox and click "inspect element". Alternatively,
+                     you may press the F12 key to bring up the developer tools, however the "inspect element" method
+                     will take you directly to the appropriate lines of the HTML code.
+               </p>
+               <div class="key">
+                    <table class="key">
+                         <th>Before</th>
+                         <th></th>
+                         <th>After</th>
+                         <tr>
+                              <td><img src="KeyRequestNo.jpg" alt="No Button" style="width:450px; height:300px"></td>
+                              <td class="middle">=></br>=></br>=></td>
+                              <td><img src="KeyRequestButton.jpg" alt="Button Appears" style="width:450px; height:300px"></td>
+                         </tr>
+                         <tr>
+                              <td align="center"><i>as of March 1st, 2017</i></td>
+                              <td></td>
+                              <td></td>
+                         </tr>
+                    </table>
+               </div>
+               <p>
+                    Once you have opened the developer tools on your favorite browser, turn your attention to
+                     the line of code highlighted in the <i>Before</i> image above. This is the code for the
+                     "Accept" button, and you should notice that it has been created with a display style of
+                     "none". All you need to do is click (or double click) on the word "style", so that it is
+                     selected, and then delete it. If you have done it correctly, the "Accept" button should
+                     now be visable, like it is in the <i>After</i> image above. Now, simply click the "Accept"
+                     button and you should receive your API key.
+               </p>
+               <h3>Marvel's Interactive API Tester Does Not Appear When Accessed From Marvel's Site</h3>
+               <p>
+                    Now that you have a developer account and Marvel has assigned you an API key, you will
+                     probably want to start seeing what all the Marvel API can do. The best place to get
+                     some real, hands-on practice with the Marvel APIs is the Interactive API Tester, which
+                     can be found <a href="https://developer.marvel.com/docs">here</a>.
+               </p>
+               <p>
+                    However, once you reach that site, you will probably start to get the feeling that
+                     something is missing . . . again. If you access this page from any link on the Marvel
+                     site, you should notice that the interactive API tester does not appear. This is because
+                     Marvel has created all of its links with the <a class="code">https://</a> prefix. The
+                     plug-in Marvel is using for the interactive tool causes a security issue, and so the
+                     <a class="code">https://</a> prefix prevents it from rendering.
+               </p>
+               <div class="interactive">
+                    <table class="interactive">
+                         <th>HTTPS://</th>
+                         <th></th>
+                         <th>HTTP://</th>
+                         <tr>
+                              <td><img src="InteractiveNo.jpg" alt="No API Tester" style="width:450px; height:300px"></td>
+                              <td class="middle">=></br>=></br>=></td>
+                              <td><img src="InteractiveWorking.jpg" alt="API Tester Appears" style="width:450px; height:300px"></td>
+                         </tr>
+                         <tr>
+                              <td align="center"><i>as of March 1st, 2017</i></td>
+                              <td></td>
+                              <td></td>
+                         </tr>
+                    </table>
+               </div>
+               <p>
+                    Instead, all you have to do is click in your address bar and delete the "s" so that
+                     the path begins with <a class="code">http://</a>, or click <a href="http://developer.marvel.com/docs">here</a>.
+                     You can also go to your favorite search engine and navigate to the Interactive API
+                     Testing page from your search results.
+               </p>
+               <p>
+                    Whichever method you chose, you should now be able to see and use Marvel's interactive
+                     API tester.
+               </p>
+               <h3>Responsible Use of Marvel's API</h3>
+               <p>
+                    After you have created a developer account you should take some time to re-read Marvel's
+                    "Terms of Use" (located <a href="https://developer.marvel.com/terms">here</a>) and read
+                    their policies for linking and attribution (located <a href="https://developer.marvel.com/documentation/attribution">here</a>).
+               </p>
+               <p style="text-align:center; text-indent:0px">
+                    <b style="color:red">
+                         **Violating the "Terms of Use" or failing to attribute will result
+                         in your account/key being banned, and/or legal action. Don't Do It!**
+                    </b>
+               </p>
+               <h3>Basics of Using the Marvel API</h3>
+               <p>
+                    Here is where we need to figure out something cool to do with the API and explain
+                    code snippets and examples.
+               </p>
+               <h3>Subtle Differences Between Client-side and Server-side Requests</h3>
+               <p>
+                    Here is where we need to figure out something cool to do with the API and explain
+                    code snippets and examples.
+               </p>
+               <h3>Basics of and Variations on Image Requests</h3>
+               <p>
+                    Here is where we need to figure out something cool to do with the API and explain
+                    code snippets and examples.
+               </p>
+               <h3>A Note About Character IDs (and other Marvel ID Codes)</h3>
+               <p>
+                    Here is where we need to figure out something cool to do with the API and explain
+                    code snippets and examples.
+               </p>
+               <h3>Using JavaScript to Download A Complete List of Characters</h3>
+               <p>
+                    Here is where we need to figure out something cool to do with the API and explain
+                    code snippets and examples.
+               </p>
+          </div>
+          <div class="footer"> All rights reserved. &copy February 2017. Data provided by Marvel. &copy 2017 MARVEL.</div>
+     </div>
+</div>
