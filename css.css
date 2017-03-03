@@ -1,0 +1,124 @@
+body {
+	background-color: black;
+}
+
+div.outline {
+    background-color: red;
+    width: 75%;
+    border: solid;
+    border-color: #2C3539;
+}
+
+div.header {
+    background-color: black;
+    width: 98%;
+    margin-top: 5px;
+    border: solid;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+td.MarvelHeader {
+    background-color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+h1.Marvelheader {
+    font-size: 50px;
+    font-family: "Impact";
+}
+
+h1.howTo {
+    font-size: 60px;
+    font-family: "Impact";
+}
+
+p.author {
+    text-indent: 0px;
+    text-align: center;
+    font-family: "Impact";
+    background-color: #2C3539;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: solid;
+    border-color: black;
+}
+
+div.body {
+    width: 98%;
+    background-color: white;
+    border: solid;
+    border-top: none;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h3 {
+    padding-left: 10px;
+    text-align: left;
+    margin-top: 0px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+p {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+li {
+    text-align: left;
+    text-indent: 100px;
+}
+
+h4 {
+    text-align: left;
+    text-indent: 50px;
+    margin-bottom: 2px;
+    margin-top: 10px;
+}
+
+a {
+    color: red;
+}
+
+a.code {
+    background-color: lightgrey;
+    color: black;
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+}
+
+div.key {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div.interactive {
+    margin-bottom: 15px;
+}
+
+
+td.middle {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Impact";
+}
+
+div.footer {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
