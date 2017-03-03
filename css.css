@@ -80,9 +80,9 @@ p {
     margin-bottom: 5px;
 }
 
-li {
+li.list {
     text-align: left;
-    text-indent: 100px;
+    margin-left: 100px;
 }
 
 h4 {
@@ -97,6 +97,7 @@ a {
 }
 
 a.code {
+    white-space:nowrap;
     background-color: lightgrey;
     color: black;
     font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
@@ -121,4 +122,11 @@ td.middle {
 div.footer {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+tr.resourcePaths {
+    outline: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top:20px;
 }

@@ -43,18 +43,24 @@
                      problems that you are going to encounter. These problems are not covered in any of the official
                      documentation. First, this guide will make your way around a few bugs in Marvel's developer
                      websites, listed below:
-                         <li>No "Accept" Button on the "Terms of Use" When Requesting an API Key</li>
-                         <li>Marvel's Interactive API Tester Does Not Appear When Accessed From Marvel's Site</li>
+                    <ul>
+                         <li class="list">No "Accept" Button on the "Terms of Use" When Requesting an API Key</li>
+                         <li class="list">Marvel's Interactive API Tester Does Not Appear When Accessed From Marvel's Site</li>
+                    </ul>
+                         
                </p>
                <p>
                     Once you have your Marvel API key and you have access to the Interactive API Tester, you will
                      be ready to start figuring out what you can do with the Marvel API. From that basepoint, this
                      guide will discuss the following:
-                         <li>The Basics of Using the Marvel API</li>
-                         <li>The Subtle Differences Between Client-side and Server-side API Calls</li>
-                         <li>The Basics of and Variations on Image Requests</li>
-                         <li>A Note About Character IDs (and other Marvel ID Codes)</li> 
-                         <li>Using JavaScript to Download A Complete List of Characters</li>
+                    <ul>
+                         <li class="list">The Basics of Using the Marvel API</li>
+                         <li class="list">A Note About Marvel ID Codes</li>
+                         <li class="list">The Subtle Differences Between Client-side and Server-side API Calls</li>
+                         <li class="list">The Basics of and Variations on Image Requests</li>
+                         <li class="list">Using JavaScript to Download A Complete List of Characters</li>
+                    </ul>
+
                </p>
                <p>
                     Finally, this guide will conclude with a few project ideas and suggestions on some ways you
@@ -129,9 +135,10 @@
                     However, once you reach that site, you will probably start to get the feeling that
                      something is missing . . . again. If you access this page from any link on the Marvel
                      site, you should notice that the interactive API tester does not appear. This is because
-                     Marvel has created all of its links with the <a class="code">https://</a> prefix. The
-                     plug-in Marvel is using for the interactive tool causes a security issue, and so the
-                     <a class="code">https://</a> prefix prevents it from rendering.
+                     all of the links to the Interactive API Tester on Marvel's website were created with the
+                     <a class="code">https://</a> prefix. The plug-in Marvel is using for the interactive tool
+                     causes a security issue, and so the secured <a class="code">https://</a> prefix prevents it
+                     from rendering.
                </p>
                <div class="interactive">
                     <table class="interactive">
@@ -165,8 +172,15 @@
                <h3>Responsible Use of Marvel's API</h3>
                <p>
                     After you have created a developer account you should take some time to re-read Marvel's
-                    "Terms of Use" (located <a href="https://developer.marvel.com/terms">here</a>) and read
-                    their policies for linking and attribution (located <a href="https://developer.marvel.com/documentation/attribution">here</a>).
+                     "Terms of Use" (located <a href="https://developer.marvel.com/terms">here</a>) and read
+                     their policies for linking and attribution (located
+                     <a href="https://developer.marvel.com/documentation/attribution">here</a>). The two biggest
+                     points that you need to pay attention to are:</br>
+                     1) You cannot charge any money in association with your use of the Marvel API!</br>
+                     2) You must attribute to Marvel anytime you use data that came from their API!
+               </p>
+               <p>
+                    
                </p>
                <p style="text-align:center; text-indent:0px">
                     <b style="color:red">
@@ -176,25 +190,205 @@
                </p>
                <h3>Basics of Using the Marvel API</h3>
                <p>
-                    Here is where we need to figure out something cool to do with the API and explain
-                    code snippets and examples.
+                    Now that you have your Marvel API key and you have found your way around the bugs
+                     in the interactive API tester, you are ready to start making some calls to the Marvel
+                     API. This section should give you a better idea about the types of calls you can make
+                     and what to do when something goes wrong.                    
+               </p>
+               <p>
+                    On Marvel's "General Information" page (located <a href="https://developer.marvel.com/terms">here</a>)
+                     it tells you that the base gateway for the Marvel API is: <a class="code">http(s)://gateway.marvel.com/</a>.
+                     However, if you try to write your calls directly to this path, you will experience a host
+                     of problems that will not be obvious at first. Ultimately, your request will fail because
+                     Marvel has left out some important information, like the version folder, and the public folder.
+                     Instead, the proper basepoint for calls to the Marvel API should be:
+               </p>
+               <p style="text-align:center; text-indent:0px; margin-top:20px; margin-bottom:20px">
+                     <a class="code">http(s)://gateway.marvel.com/v1/public/</a>. 
+               </p>
+               <p>
+                    All resources that make up the Marvel API are located at this root address, but you will also need to append
+                     your API key to the end of the request in the format <a class="code">?apikey={YOUR API KEY HERE}</a>
+                     There are a total of 6 types of
+                     resources available:
+                         <table style="margin-top:20px; margin-bottom:20px">
+                              <tr class="resourcePaths">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Characters</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Characters)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/characters</a>
+                                   </td>
+                                   
+                              </tr>
+                              <tr class="resourcePaths">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Comics</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Comics)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/comics</a>
+                                   </td>
+
+                              </tr>
+                              <tr class="resourcePaths">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Creators</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Creators)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/creators</a>                                        
+                                   </td>
+
+                              </tr>
+                              <tr class="resourcePaths">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Comic Series</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Comic Series)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/series</a>
+                                   </td>
+
+                              </tr>
+                              <tr class="resourcePaths">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Comic Stories</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Comic Stories)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/stories</a>
+                                   </td>
+
+                              </tr>
+                              <tr class="resourcePaths" style="border:solid">
+                                   <td style="padding-top:20px; padding-bottom:20px; text-align:left">
+                                        <li><b>Comic Events</b></li>
+                                   </td>
+                                   <td>
+                                        (Returns a list of Comic Events)
+                                   </td>
+                                   <td>
+                                        <a class="code">https://gateway.marvel.com/v1/public/events</a>
+                                   </td>
+
+                              </tr>
+                         </table>
+
+               </p>
+               <p>
+                    The default limit to the number of results in each list is 20. In order to get more (or less) than 20
+                     you must include the variable definition of <a class="code">limit={Desired Limit}&</a> before you
+                     append your API key to then end of the call (be sure not to leave off the ampersand). The maximum
+                     number of results that can be called at once is 100. In order to move beyond the initial "page" of
+                     results, you must change the "offset". This is done by including the variable definition of 
+                    <a class="code">offset={Desired Offset}&</a> in the same manner as the limit.
+               </p>
+               <p>
+                    Beyond this initial structure, to access a single resource of any of the above types, you will need
+                     the ID code for that resource (see A Note About Marvel ID Codes, below). However, once you have found
+                     the appropriate ID for the desired resource, you can then also access any other resources that are
+                     linked to it. For example, say you have an ID code for a character. The Marvel API allows you quick access
+                     to any of the individual comics in which that character appeared, or events with which they have been
+                     involved. The complete request for a list of comics in which Iron Man (Character ID # 1009368) would look
+                     like this:
+               </p>
+               <p style="text-align:center; margin-top:20px; margin-bottom:20px; text-indent:0px">
+                    <a class="code">https://gateway.marvel.com/v1/public/characters/1009368/comics?api={Your Public API Key}</a>
+               </p>
+               <p>
+                    If you wanted to increase the limit from 20 results, you would make a call like the following:
+               </p>
+               <p style="text-align:center; margin-top:20px; margin-bottom:20px; text-indent:0px">
+                    <a class="code">https://gateway.marvel.com/v1/public/characters/1009368/comics?limit=100&api={Your Public API Key}</a>
+               </p>
+               <p>
+                    If you then wanted to navigate past the first "page" of 100 results, you would need to set the offset like this:
+               </p>
+               <p style="text-align:center; margin-top:20px; margin-bottom:20px; text-indent:0px">
+                    <a class="code">https://gateway.marvel.com/v1/public/characters/1009368/comics?limit=100&offset=100&api={Your Public API Key}</a>
+               </p>
+               <p>
+                    However, say you changed the offset without changing the limit. By default the results will be displayed
+                     20 results at a time, so you will be seeing the results from the value immediately after the offset to 
+                     the offset plus 20. That call would look like this:
+               </p>
+               <p style="text-align:center; margin-top:20px; margin-bottom:20px; text-indent:0px">
+                    <a class="code">https://gateway.marvel.com/v1/public/characters/1009368/comics?offset=100&api={Your Public API Key}</a>
+               </p>
+               <p>
+                    If you have any issues with the calls you are trying to make, go back to the interactive
+                     API tester (<a href="http://developer.marvel.com/docs">here</a>, for your convienence), and
+                     double-check the syntax of your call against the call generated by the interactive tester.
+               </p>
+               <h3>A Note About Marvel ID Codes</h3>
+               <p>
+                    In order to access an individual resource under any of the above-listed types, you must
+                    include the unique ID number assigned to it by Marvel. This means that each individual
+                    Character, Comic, Creator, Comic Series, Comic Story, and Comic Event has its own ID code
+                    which you will need to make any calls to the respective resource. Unfortunately, Marvel
+                    has not provided no master list or dictionary file to quickly determine the ID for any of
+                    its resources.
+               </p>
+               <p>
+                    Therefore, there are only two ways to determine the ID for a resource. The first way is
+                    to go to the Marvel Interactive API tester and query by name in the appropriate tester.
+                    Next, you will need to navigate the results to find the resource you are looking for,
+                    and copy down the ID code. This will work just fine if you are looking for a single resource
+                    where you know the search term with a high degree of specificity. However, if you need to
+                    get an entire list of resources, this would be a slow and tedious way to do it. Instead, you
+                    should write a JavaScript function that makes requests and perhaps have that function write
+                    the IDs to a text document for quick reference. It is likely that you will be needing the
+                    same IDs numerous times in a single project, and you do not want to keep having to search
+                    for them over and over again. An example of this kind of function can be found in the last
+                    section.
                </p>
                <h3>Subtle Differences Between Client-side and Server-side Requests</h3>
                <p>
-                    Here is where we need to figure out something cool to do with the API and explain
-                    code snippets and examples.
+                    There are a few differences between Client-side requests and Server-side requests of which
+                     you should be aware.
+               </p>
+               <p>
+                    All <b>Client-side requests</b> must be made from a pre-authorized website URL.
+                     You can add or remove these pre-authorized URLs at any time by going to the "My Developer Account"
+                     page on the Marvel website, or by clicking <a href="https://developer.marvel.com/account">here</a>.
+                     Half-way down that page, you will find the "Your Authorized Referrers" section, where you can add
+                     and remove authorized clients. When making Client-side requests, you only have to append your public 
+                     API key to the end of the call like in each of the examples above.
+               </p>
+               <p>
+                    <b>Server-side</b> requests requre slightly more. First, you will need to include a time-stamp. This
+                    is done by appending the variable declaration <a class="code">ts={number}&</a>. To my knowledge, this
+                    can be any number. Next, you will need to append your API key like in each of the examples above. However,
+                    when submitting Server-side requests, you must also provide a <b>hash</b>. This hash is the MD5 digest of your
+                    time-stamp, your private API key, and your public API key. The easiest way to figure out your hash is
+                    to click <a href="http://www.sha1-online.com/">here</a>. Once on that site, you should change the drop
+                    down menu to "MD5". Next, enter your time-stamp, followed by your private API key, followed by your
+                    public API key. Do not leave any spaces or characters between any of these numbers. After all of your
+                    information is entered, simply click the "Hash" button. The value that is returned will need to be passed
+                    to the API call by setting the hash equal to that value. For example, a complete call for the list of comics
+                    in which Iron Man appears from a server would look like the following (and you can compare it to the one above):
+               </p>
+               <p style="text-align:center; margin-top:20px; margin-bottom:20px; text-indent:0px">
+                    <a class="code">https://gateway.marvel.com/v1/public/characters/1009368/comics?ts=1&api=a1b2c3d4&hash=53fd794e48b14d7864997d9b9cc0097a</a>
                </p>
                <h3>Basics of and Variations on Image Requests</h3>
                <p>
                     Here is where we need to figure out something cool to do with the API and explain
                     code snippets and examples.
                </p>
-               <h3>A Note About Character IDs (and other Marvel ID Codes)</h3>
-               <p>
-                    Here is where we need to figure out something cool to do with the API and explain
-                    code snippets and examples.
-               </p>
-               <h3>Using JavaScript to Download A Complete List of Characters</h3>
+               <h3>Using JavaScript to Download Lists of Resources</h3>
                <p>
                     Here is where we need to figure out something cool to do with the API and explain
                     code snippets and examples.
